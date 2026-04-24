@@ -1,65 +1,1332 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>After Hours Service</title>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>After Hours Service — 24/7 Home Service Booking via SMS</title>
+  <meta name="description" content="Submit your HVAC, plumbing, or electrical service request online and get a technician booked via SMS — even at 2am. Fast, simple, no phone calls required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* ─── CSS Variables ───────────────────────────────────────────────── */
+    :root {
+      --navy:        #0a1628;
+      --navy-mid:    #0f1f3d;
+      --navy-light:  #162447;
+      --cyan:        #00d4ff;
+      --cyan-dim:    #00aacf;
+      --cyan-glow:   rgba(0, 212, 255, 0.15);
+      --white:       #ffffff;
+      --white-70:    rgba(255,255,255,0.70);
+      --white-40:    rgba(255,255,255,0.40);
+      --white-10:    rgba(255,255,255,0.08);
+      --white-5:     rgba(255,255,255,0.04);
+      --success:     #22c55e;
+      --error:       #f87171;
+      --border:      rgba(0,212,255,0.20);
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-xl:   32px;
+      --shadow-glow: 0 0 40px rgba(0,212,255,0.12);
+      --transition:  all 0.25s ease;
+    }
+
+    /* ─── Reset & Base ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 40px auto;
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
       line-height: 1.6;
-      color: #333;
+      overflow-x: hidden;
     }
-    h1 {
-      color: #1a73e8;
+
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
+
+    a { color: var(--cyan); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--white); }
+
+    img { max-width: 100%; }
+
+    /* ─── Animated Background ─────────────────────────────────────────── */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(0,212,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(0,80,160,0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #0a1628 0%, #070f1e 100%);
+      pointer-events: none;
     }
-    h2 {
-      margin-top: 30px;
+
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+      animation: float 12s ease-in-out infinite;
+      z-index: 0;
     }
-    a {
-      color: #1a73e8;
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,212,255,0.25), transparent 70%);
+      top: -150px; right: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,80,200,0.20), transparent 70%);
+      bottom: -100px; left: -100px;
+      animation-delay: -6s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50%       { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* ─── Layout ──────────────────────────────────────────────────────── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 96px 0; }
+
+    /* ─── Navigation ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10, 22, 40, 0.80);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--white-70);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--cyan);
+      color: var(--navy) !important;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: var(--transition) !important;
+    }
+    .nav-cta:hover {
+      background: var(--white) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,212,255,0.30);
+    }
+
+    /* ─── Hero ────────────────────────────────────────────────────────── */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 96px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white-10);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--cyan);
+      margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    #hero h1 .gradient {
+      background: linear-gradient(90deg, var(--cyan), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--white-70);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cyan);
+      color: var(--navy);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 34px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
       text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--white);
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,212,255,0.35);
+    }
+    .btn-primary svg { transition: var(--transition); }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white-70);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 16px 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--white-40);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid var(--white-10);
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.85rem;
+      color: var(--white-70);
+    }
+
+    /* ─── How It Works ────────────────────────────────────────────────── */
+    #how-it-works {
+      background: none;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--white-70);
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .step-card {
+      background: var(--white-5);
+      border: 1px solid var(--white-10);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .step-card:hover {
+      border-color: var(--border);
+      background: var(--white-10);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .step-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--cyan);
+      opacity: 0.15;
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      line-height: 1;
+    }
+
+    .step-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--cyan-glow);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--white-70);
+      line-height: 1.65;
+    }
+
+    /* ─── Trades Banner ───────────────────────────────────────────────── */
+    .trades-banner {
+      background: var(--white-5);
+      border: 1px solid var(--white-10);
+      border-radius: var(--radius-xl);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 48px;
+      backdrop-filter: blur(10px);
+    }
+    .trades-label {
+      font-size: 0.8rem;
+      color: var(--white-40);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .trades-list {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .trade-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-70);
+    }
+    .trade-chip .icon { font-size: 1.1rem; }
+
+    /* ─── Service Form ────────────────────────────────────────────────── */
+    #request {
+      background: linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.03) 50%, transparent 100%);
+    }
+
+    .form-container {
+      background: var(--white-5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 52px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glow);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .form-header .section-label { display: block; }
+    .form-header h2 { margin-bottom: 10px; }
+    .form-header p { color: var(--white-70); font-size: 0.95rem; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .form-full { grid-column: 1 / -1; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--white-70);
+      letter-spacing: 0.01em;
+    }
+    label .required { color: var(--cyan); margin-left: 2px; }
+
+    input, textarea, select {
+      background: var(--white-10);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      outline: none;
+      width: 100%;
+    }
+    input::placeholder, textarea::placeholder { color: var(--white-40); }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--cyan);
+      background: rgba(0,212,255,0.06);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.10);
+    }
+    input.error, textarea.error, select.error { border-color: var(--error); }
+
+    select { cursor: pointer; appearance: none; }
+    select option { background: var(--navy-mid); color: var(--white); }
+
+    textarea { resize: vertical; min-height: 110px; }
+
+    /* Urgency selector */
+    .urgency-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .urgency-option {
+      display: none;
+    }
+    .urgency-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 10px;
+      background: var(--white-10);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--white-70);
+    }
+    .urgency-label .urg-icon { font-size: 1.4rem; }
+    .urgency-label .urg-title { font-weight: 600; color: var(--white); font-size: 0.85rem; }
+    .urgency-label .urg-desc { color: var(--white-40); font-size: 0.75rem; }
+    .urgency-option:checked + .urgency-label {
+      border-color: var(--cyan);
+      background: rgba(0,212,255,0.10);
+      color: var(--white);
+    }
+    .urgency-label:hover {
+      border-color: var(--border);
+      background: var(--white-10);
+    }
+
+    /* Trade type selector */
+    .trade-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .trade-option { display: none; }
+    .trade-opt-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 8px;
+      background: var(--white-10);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--white-70);
+    }
+    .trade-opt-label .opt-icon { font-size: 1.4rem; }
+    .trade-option:checked + .trade-opt-label {
+      border-color: var(--cyan);
+      background: rgba(0,212,255,0.10);
+      color: var(--white);
+      font-weight: 600;
+    }
+    .trade-opt-label:hover {
+      border-color: var(--border);
+      background: var(--white-10);
+    }
+
+    /* Consent checkbox */
+    .consent-block {
+      background: rgba(0,212,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-top: 4px;
+    }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--cyan);
+    }
+    .consent-text {
+      font-size: 0.82rem;
+      color: var(--white-70);
+      line-height: 1.6;
+    }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%;
+      background: var(--cyan);
+      color: var(--navy);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 18px 32px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,212,255,0.35);
+    }
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .submit-btn .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(10,22,40,0.3);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Form states */
+    .form-success, .form-error {
+      display: none;
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .form-success .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .form-success h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--success);
+    }
+    .form-success p { color: var(--white-70); font-size: 0.95rem; }
+
+    .form-error-msg {
+      background: rgba(248,113,113,0.10);
+      border: 1px solid rgba(248,113,113,0.30);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 0.875rem;
+      color: var(--error);
+      margin-top: 4px;
+      display: none;
+    }
+
+    /* ─── SMS Compliance ──────────────────────────────────────────────── */
+    #sms-compliance {
+      padding: 48px 0;
+    }
+    .compliance-box {
+      background: var(--white-5);
+      border: 1px solid var(--white-10);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .compliance-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white-70);
+      margin-bottom: 12px;
+    }
+    .compliance-box p {
+      font-size: 0.82rem;
+      color: var(--white-40);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .compliance-box p:last-child { margin-bottom: 0; }
+    .compliance-box a { font-size: 0.82rem; color: var(--white-40); text-decoration: underline; }
+
+    /* ─── B2B Section ─────────────────────────────────────────────────── */
+    #for-companies {
+      background: linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.04) 50%, transparent 100%);
+    }
+
+    .b2b-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .b2b-content .section-sub { margin-bottom: 32px; }
+
+    .b2b-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .b2b-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.95rem;
+      color: var(--white-70);
+    }
+    .b2b-feature .check {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: var(--cyan-glow);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--cyan);
+      margin-top: 1px;
+    }
+    .b2b-feature strong { color: var(--white); }
+
+    .b2b-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .b2b-trade-card {
+      background: var(--white-5);
+      border: 1px solid var(--white-10);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .b2b-trade-card:hover {
+      border-color: var(--border);
+      background: var(--white-10);
+      transform: translateX(6px);
+    }
+    .trade-card-icon {
+      font-size: 2rem;
+      width: 56px;
+      text-align: center;
+    }
+    .trade-card-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .trade-card-body p {
+      font-size: 0.82rem;
+      color: var(--white-70);
+    }
+    .trade-card-badge {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--cyan-glow);
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    .demo-prompt {
+      background: var(--white-5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .demo-prompt p {
+      font-size: 0.85rem;
+      color: var(--white-70);
+      margin-bottom: 6px;
+    }
+    .demo-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+    }
+    .demo-note {
+      font-size: 0.75rem;
+      color: var(--white-40);
+      margin-top: 6px;
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--white-10);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .footer-logo span { color: var(--cyan); }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--white-40);
+    }
+    .footer-links a:hover { color: var(--white-70); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--white-40);
+      width: 100%;
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      #hero { padding-top: 120px; }
+      .form-container { padding: 32px 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .trade-options { grid-template-columns: repeat(2, 1fr); }
+      .urgency-options { grid-template-columns: 1fr; }
+      .b2b-grid { grid-template-columns: 1fr; }
+      .b2b-cards { order: -1; }
+      .trades-banner { padding: 24px; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 24px; }
+      .compliance-box { padding: 24px; }
     }
   </style>
 </head>
+
 <body>
 
-<h1>After Hours Service</h1>
+  <!-- Background -->
+  <div class="bg-mesh"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-<p>We provide HVAC booking and appointment scheduling services for after-hours service requests.</p>
+  <!-- ── Navigation ─────────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">After Hours<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#request">Request Service</a></li>
+        <li><a href="#for-companies">For Companies</a></li>
+        <li><a class="nav-cta" href="#request">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<p>Our system allows customers to submit service requests online and receive real-time updates via SMS.</p>
+  <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available 24/7 — Even at 2am
+      </div>
 
-<h2>Request Service</h2>
-<p>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSf4Z5lXkFn6ZeawqyTz0yEtFJaoJgTccOkAPyUDp4azJ5Dtjg/viewform?usp=header">Submit a Service Request</a>
-</p>
+      <h1>
+        After-Hours Service Booking<br />
+        <span class="gradient">Done Entirely via Text</span>
+      </h1>
 
-<h2>SMS Communication</h2>
-<p>
-By submitting a service request through our form, you consent to receive SMS messages related to your request.
-</p>
+      <p class="hero-sub">
+        Submit your service request below. Our system handles the booking, confirmation, and payment automatically — no phone tag, no hold music, no waiting until morning.
+      </p>
 
-<p>These messages may include:</p>
-<ul>
-  <li>Appointment confirmations</li>
-  <li>Scheduling updates</li>
-  <li>Technician arrival notifications</li>
-</ul>
+      <div class="hero-actions">
+        <a href="#request" class="btn-primary" id="hero-cta-btn">
+          Request Service Now
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a href="#how-it-works" class="btn-ghost" id="hero-learn-btn">
+          See how it works
+        </a>
+      </div>
 
-<p>
-Message frequency varies. Message and data rates may apply. You can opt out at any time by replying STOP. For help, reply HELP.
-</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number">2 min</span>
+          <span class="hero-stat-label">Avg. response time</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">24/7</span>
+          <span class="hero-stat-label">Always available</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">100%</span>
+          <span class="hero-stat-label">SMS-based booking</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">3 trades</span>
+          <span class="hero-stat-label">HVAC · Plumbing · Electrical</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2>Contact</h2>
-<p>Email: evmendyk@gmail.com</p>
+  <!-- ── How It Works ────────────────────────────────────────────────────── -->
+  <section id="how-it-works">
+    <div class="container">
+      <p class="section-label">The Process</p>
+      <h2 class="section-title">Three steps. Confirmed in minutes.</h2>
+      <p class="section-sub">No app downloads, no account creation, no hold music. Just fill out the form and your phone does the rest.</p>
 
-<h2>Legal</h2>
-<p>
-<a href="https://evmendyk-dot.github.io/hvac-mvp/privacy.html">Privacy Policy</a><br>
-<a href="https://evmendyk-dot.github.io/hvac-mvp/terms.html">Terms & Conditions</a>
-</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <div class="step-icon">📋</div>
+          <h3>Submit Your Request</h3>
+          <p>Fill out the short form below with your problem, address, and phone number. Takes less than 60 seconds.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <div class="step-icon">💬</div>
+          <h3>Get a Text Message</h3>
+          <p>You'll receive an SMS within minutes. Reply YES and you'll get a Calendly link to pick your appointment time.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <div class="step-icon">✅</div>
+          <h3>Appointment Confirmed</h3>
+          <p>After a small service fee, your appointment is locked in and a technician is dispatched. No calls required.</p>
+        </div>
+      </div>
+
+      <div class="trades-banner" id="trades-section">
+        <div>
+          <div class="trades-label">Available For</div>
+          <strong style="font-family:'Outfit',sans-serif;">HVAC · Plumbing · Electrical · and more</strong>
+        </div>
+        <div class="trades-list">
+          <div class="trade-chip"><span class="icon">❄️</span> HVAC</div>
+          <div class="trade-chip"><span class="icon">🔧</span> Plumbing</div>
+          <div class="trade-chip"><span class="icon">⚡</span> Electrical</div>
+          <div class="trade-chip"><span class="icon">🔩</span> Other</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Service Request Form ────────────────────────────────────────────── -->
+  <section id="request">
+    <div class="container">
+      <div class="form-container">
+
+        <div class="form-header">
+          <p class="section-label">Request Service</p>
+          <h2 class="section-title" style="font-size:1.9rem;">Submit a Service Request</h2>
+          <p>Fill in your details and we'll text you within minutes to confirm your appointment.</p>
+        </div>
+
+        <!-- Success State -->
+        <div class="form-success" id="form-success">
+          <span class="success-icon">✅</span>
+          <h3>Request Received!</h3>
+          <p>Check your phone — you'll get a text message within a few minutes to confirm your appointment time and service fee.</p>
+          <p style="margin-top:12px; font-size:0.82rem; color:var(--white-40);">If you don't receive a text within 10 minutes, reply HELP to our number or email us at <a href="mailto:evmendyk@gmail.com">evmendyk@gmail.com</a>.</p>
+        </div>
+
+        <!-- The Form -->
+        <form id="service-form" novalidate>
+
+          <!-- Personal Info -->
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel" required />
+            </div>
+            <div class="field form-full">
+              <label for="address">Service Address <span class="required">*</span></label>
+              <input type="text" id="address" name="address" placeholder="123 Main St, Charlotte, NC 28201" autocomplete="street-address" required />
+            </div>
+          </div>
+
+          <!-- Service Type -->
+          <div class="field" style="margin-bottom:20px;">
+            <label>Service Type <span class="required">*</span></label>
+            <div class="trade-options">
+              <input type="radio" name="trade_type" id="trade-hvac" class="trade-option" value="HVAC" checked />
+              <label class="trade-opt-label" for="trade-hvac">
+                <span class="opt-icon">❄️</span>
+                HVAC
+              </label>
+
+              <input type="radio" name="trade_type" id="trade-plumbing" class="trade-option" value="PLUMBING" />
+              <label class="trade-opt-label" for="trade-plumbing">
+                <span class="opt-icon">🔧</span>
+                Plumbing
+              </label>
+
+              <input type="radio" name="trade_type" id="trade-electrical" class="trade-option" value="ELECTRICAL" />
+              <label class="trade-opt-label" for="trade-electrical">
+                <span class="opt-icon">⚡</span>
+                Electrical
+              </label>
+
+              <input type="radio" name="trade_type" id="trade-other" class="trade-option" value="OTHER" />
+              <label class="trade-opt-label" for="trade-other">
+                <span class="opt-icon">🔩</span>
+                Other
+              </label>
+            </div>
+          </div>
+
+          <!-- Urgency -->
+          <div class="field" style="margin-bottom:20px;">
+            <label>Urgency Level <span class="required">*</span></label>
+            <div class="urgency-options">
+              <input type="radio" name="urgency" id="urg-emergency" class="urgency-option" value="emergency" />
+              <label class="urgency-label" for="urg-emergency">
+                <span class="urg-icon">🚨</span>
+                <span class="urg-title">Emergency</span>
+                <span class="urg-desc">Safety risk / no power / flooding</span>
+              </label>
+
+              <input type="radio" name="urgency" id="urg-urgent" class="urgency-option" value="urgent" checked />
+              <label class="urgency-label" for="urg-urgent">
+                <span class="urg-icon">⏰</span>
+                <span class="urg-title">Urgent</span>
+                <span class="urg-desc">Within 24 hours</span>
+              </label>
+
+              <input type="radio" name="urgency" id="urg-routine" class="urgency-option" value="routine" />
+              <label class="urgency-label" for="urg-routine">
+                <span class="urg-icon">📅</span>
+                <span class="urg-title">Routine</span>
+                <span class="urg-desc">Flexible scheduling</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Problem Description -->
+          <div class="field" style="margin-bottom:24px;">
+            <label for="problem_description">Describe the Problem <span class="required">*</span></label>
+            <textarea id="problem_description" name="problem_description" placeholder="Briefly describe what's happening — e.g. 'AC stopped working, unit not turning on, house at 85°F'" required></textarea>
+          </div>
+
+          <!-- SMS Consent -->
+          <div class="field" style="margin-bottom:24px;">
+            <div class="consent-block">
+              <div class="consent-row">
+                <input type="checkbox" id="sms_consent" name="sms_consent" required />
+                <span class="consent-text">
+                  By checking this box, I consent to receive SMS messages from After Hours Service regarding my service request, including appointment confirmations, scheduling updates, and technician notifications. Message &amp; data rates may apply. Message frequency varies. Reply STOP to opt out, HELP for assistance.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error display -->
+          <div class="form-error-msg" id="form-error-msg"></div>
+
+          <!-- Submit -->
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <div class="spinner" id="submit-spinner"></div>
+            <span id="submit-text">Send My Request via Text</span>
+            <svg id="submit-arrow" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+
+          <p style="text-align:center; font-size:0.78rem; color:var(--white-40); margin-top:14px;">
+            Your info is never sold or shared. View our <a href="privacy.html">Privacy Policy</a>.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SMS Compliance Block ────────────────────────────────────────────── -->
+  <section id="sms-compliance">
+    <div class="container">
+      <div class="compliance-box">
+        <h3>SMS Communication Disclosure</h3>
+        <p>
+          By submitting a service request through this form, you expressly consent to receive automated SMS text messages from After Hours Service related to your service request. These messages may include appointment confirmations, scheduling updates, technician arrival notifications, payment links, and follow-up reminders.
+        </p>
+        <p>
+          Message frequency varies based on your service request status. Standard message and data rates may apply depending on your mobile carrier plan. You may opt out at any time by replying <strong>STOP</strong> to any message. For assistance, reply <strong>HELP</strong> or contact us at <a href="mailto:evmendyk@gmail.com">evmendyk@gmail.com</a>.
+        </p>
+        <p>
+          Consent is not a condition of purchase. <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── For Companies ───────────────────────────────────────────────────── -->
+  <section id="for-companies">
+    <div class="container">
+      <div class="b2b-grid">
+        <div class="b2b-content">
+          <p class="section-label">For Home Service Companies</p>
+          <h2 class="section-title">Plug this system into<br/>your business</h2>
+          <p class="section-sub">
+            After Hours Service is the booking infrastructure behind the form above. We white-label it for HVAC, plumbing, and electrical companies so their customers get a slick SMS booking experience — without the owner having to answer calls at midnight.
+          </p>
+
+          <ul class="b2b-features">
+            <li class="b2b-feature">
+              <div class="check">✓</div>
+              <div><strong>Zero missed after-hours calls.</strong> Customers submit online, your system handles the rest automatically.</div>
+            </li>
+            <li class="b2b-feature">
+              <div class="check">✓</div>
+              <div><strong>Payments collected upfront.</strong> Service fee charged via Stripe before the tech is dispatched.</div>
+            </li>
+            <li class="b2b-feature">
+              <div class="check">✓</div>
+              <div><strong>Full conversation log.</strong> Every text, stage, and payment recorded in your dashboard.</div>
+            </li>
+            <li class="b2b-feature">
+              <div class="check">✓</div>
+              <div><strong>Works for any trade.</strong> HVAC, plumbing, electrical — one platform, personalized per company.</div>
+            </li>
+          </ul>
+
+          <a href="mailto:evmendyk@gmail.com?subject=After Hours Service Demo Request" class="btn-primary" id="b2b-contact-btn">
+            Request a Live Demo
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="b2b-cards">
+          <div class="b2b-trade-card">
+            <div class="trade-card-icon">❄️</div>
+            <div class="trade-card-body">
+              <h4>HVAC Companies</h4>
+              <p>24/7 after-hours AC &amp; heating calls — booked automatically.</p>
+            </div>
+            <div class="trade-card-badge">Active</div>
+          </div>
+          <div class="b2b-trade-card">
+            <div class="trade-card-icon">🔧</div>
+            <div class="trade-card-body">
+              <h4>Plumbing Companies</h4>
+              <p>Late-night burst pipes and drain emergencies handled via SMS.</p>
+            </div>
+            <div class="trade-card-badge">Available</div>
+          </div>
+          <div class="b2b-trade-card">
+            <div class="trade-card-icon">⚡</div>
+            <div class="trade-card-body">
+              <h4>Electrical Companies</h4>
+              <p>Outage and panel calls triaged and scheduled without a phone call.</p>
+            </div>
+            <div class="trade-card-badge">Available</div>
+          </div>
+
+          <div class="demo-prompt">
+            <p>See it live — text any phone right now</p>
+            <div class="demo-number">📱 Text "DEMO" to get started</div>
+            <p class="demo-note">During a sales call? Text any number and watch the full SMS flow in real time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">After Hours<span>.</span></div>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="mailto:evmendyk@gmail.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 After Hours Service. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- ── JavaScript ──────────────────────────────────────────────────────── -->
+  <script>
+    // ── Configuration ────────────────────────────────────────────────────
+    // TODO: Replace this URL with your actual Railway deployment URL.
+    // Example: "https://hvac-booking-backend-production.up.railway.app"
+    const API_BASE_URL = "https://YOUR-RAILWAY-URL.up.railway.app";
+
+    // The company_id to send with each request.
+    // This determines which Twilio number, Calendly link, etc. are used.
+    // TODO: Replace with your actual company_id from the DB (e.g. "hvac_001").
+    const COMPANY_ID = "hvac_001";
+
+    // ── Form Submission ──────────────────────────────────────────────────
+    const form = document.getElementById("service-form");
+    const successBlock = document.getElementById("form-success");
+    const errorMsg = document.getElementById("form-error-msg");
+    const submitBtn = document.getElementById("submit-btn");
+    const submitText = document.getElementById("submit-text");
+    const submitSpinner = document.getElementById("submit-spinner");
+    const submitArrow = document.getElementById("submit-arrow");
+
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitSpinner.style.display = loading ? "block" : "none";
+      submitArrow.style.display = loading ? "none" : "block";
+      submitText.textContent = loading ? "Sending your request…" : "Send My Request via Text";
+    }
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.style.display = "block";
+      errorMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function hideError() {
+      errorMsg.style.display = "none";
+      errorMsg.textContent = "";
+    }
+
+    function getSelectedRadio(name) {
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? el.value : null;
+    }
+
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const problem = document.getElementById("problem_description").value.trim();
+      const consent = document.getElementById("sms_consent").checked;
+
+      if (!name) return "Please enter your full name.";
+      if (!phone || phone.replace(/\D/g, "").length < 10) return "Please enter a valid 10-digit phone number.";
+      if (!address) return "Please enter your service address.";
+      if (!problem) return "Please describe the problem.";
+      if (!consent) return "You must consent to SMS messages to submit a service request.";
+      return null;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideError();
+
+      const validationError = validateForm();
+      if (validationError) {
+        showError(validationError);
+        return;
+      }
+
+      setLoading(true);
+
+      const payload = {
+        name:                document.getElementById("name").value.trim(),
+        phone:               document.getElementById("phone").value.trim(),
+        address:             document.getElementById("address").value.trim(),
+        problem_description: document.getElementById("problem_description").value.trim(),
+        urgency:             getSelectedRadio("urgency") || "urgent",
+        trade_type:          getSelectedRadio("trade_type") || "HVAC",
+        company_id:          COMPANY_ID,
+        sms_consent:         true,
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/submit-request`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          const detail = data.detail || `Server error (${response.status}). Please try again.`;
+          showError(detail);
+          setLoading(false);
+          return;
+        }
+
+        // Success — show confirmation
+        form.style.display = "none";
+        successBlock.style.display = "block";
+        successBlock.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      } catch (err) {
+        console.error("Submit error:", err);
+        showError(
+          "We couldn't reach the server. Please check your connection and try again, or email us at evmendyk@gmail.com."
+        );
+        setLoading(false);
+      }
+    });
+
+    // ── Smooth nav scroll offset fix ────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 80; // nav height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    });
+  </script>
 
 </body>
 </html>
