@@ -12,25 +12,25 @@
   <style>
     /* ─── CSS Variables ───────────────────────────────────────────────── */
     :root {
-      --navy:        #0a1628;
-      --navy-mid:    #0f1f3d;
-      --navy-light:  #162447;
-      --cyan:        #00d4ff;
-      --cyan-dim:    #00aacf;
-      --cyan-glow:   rgba(0, 212, 255, 0.15);
-      --white:       #ffffff;
-      --white-70:    rgba(255,255,255,0.70);
-      --white-40:    rgba(255,255,255,0.40);
-      --white-10:    rgba(255,255,255,0.08);
-      --white-5:     rgba(255,255,255,0.04);
+      --navy:        #080808;
+      --navy-mid:    #0f0f0f;
+      --navy-light:  #1a1a1a;
+      --cyan:        #C4973A;
+      --cyan-dim:    #A07830;
+      --cyan-glow:   rgba(196,151,58,0.15);
+      --white:       #F5F0E8;
+      --white-70:    rgba(245,240,232,0.70);
+      --white-40:    rgba(245,240,232,0.40);
+      --white-10:    rgba(245,240,232,0.08);
+      --white-5:     rgba(245,240,232,0.04);
       --success:     #22c55e;
       --error:       #f87171;
-      --border:      rgba(0,212,255,0.20);
+      --border:      rgba(196,151,58,0.22);
       --radius-sm:   8px;
       --radius-md:   16px;
       --radius-lg:   24px;
       --radius-xl:   32px;
-      --shadow-glow: 0 0 40px rgba(0,212,255,0.12);
+      --shadow-glow: 0 0 40px rgba(196,151,58,0.12);
       --transition:  all 0.25s ease;
     }
 
@@ -60,9 +60,9 @@
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(0,212,255,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(0,80,160,0.15) 0%, transparent 60%),
-        linear-gradient(180deg, #0a1628 0%, #070f1e 100%);
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(196,151,58,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(196,151,58,0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
       pointer-events: none;
     }
 
@@ -78,13 +78,13 @@
     }
     .orb-1 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,212,255,0.25), transparent 70%);
+      background: radial-gradient(circle, rgba(196,151,58,0.20), transparent 70%);
       top: -150px; right: -100px;
       animation-delay: 0s;
     }
     .orb-2 {
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(0,80,200,0.20), transparent 70%);
+      background: radial-gradient(circle, rgba(196,151,58,0.10), transparent 70%);
       bottom: -100px; left: -100px;
       animation-delay: -6s;
     }
@@ -111,7 +111,7 @@
       z-index: 100;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      background: rgba(10, 22, 40, 0.80);
+      background: rgba(8, 8, 8, 0.92);
       border-bottom: 1px solid var(--border);
     }
 
@@ -127,12 +127,20 @@
 
     .nav-logo {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--white);
-      letter-spacing: -0.02em;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .nav-logo span { color: var(--cyan); }
+    .nav-logo .logo-arrow {
+      color: var(--cyan);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .nav-logo span.logo-dot { color: var(--cyan); }
 
     .nav-links {
       display: flex;
@@ -150,17 +158,19 @@
 
     .nav-cta {
       background: var(--cyan);
-      color: var(--navy) !important;
-      padding: 10px 22px;
+      color: #000 !important;
+      padding: 9px 20px;
       border-radius: var(--radius-sm);
       font-weight: 600 !important;
       font-size: 0.875rem !important;
       transition: var(--transition) !important;
+      letter-spacing: 0.02em;
     }
     .nav-cta:hover {
       background: var(--white) !important;
+      color: #000 !important;
       transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(0,212,255,0.30);
+      box-shadow: 0 8px 24px rgba(196,151,58,0.30);
     }
 
     /* ─── Hero ────────────────────────────────────────────────────────── */
@@ -203,7 +213,7 @@
       line-height: 1.1;
     }
     #hero h1 .gradient {
-      background: linear-gradient(90deg, var(--cyan), #60a5fa);
+      background: linear-gradient(90deg, var(--cyan), #E8C070);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -230,7 +240,7 @@
       align-items: center;
       gap: 8px;
       background: var(--cyan);
-      color: var(--navy);
+      color: #000;
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
       font-size: 1rem;
@@ -243,9 +253,9 @@
     }
     .btn-primary:hover {
       background: var(--white);
-      color: var(--navy);
+      color: #000;
       transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(0,212,255,0.35);
+      box-shadow: 0 16px 40px rgba(196,151,58,0.35);
     }
     .btn-primary svg { transition: var(--transition); }
     .btn-primary:hover svg { transform: translateX(4px); }
@@ -418,7 +428,7 @@
 
     /* ─── Service Form ────────────────────────────────────────────────── */
     #request {
-      background: linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.03) 50%, transparent 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(196,151,58,0.03) 50%, transparent 100%);
     }
 
     .form-container {
@@ -862,7 +872,7 @@
   <!-- ── Navigation ─────────────────────────────────────────────────────── -->
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">Via Vera<span>.</span></div>
+      <div class="nav-logo"><span class="logo-arrow">→</span> Via Vera<span class="logo-dot">.</span></div>
       <ul class="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#request">Request Service</a></li>
