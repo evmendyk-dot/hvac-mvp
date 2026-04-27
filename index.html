@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Via Vera — The True Path · BookIt Booking Platform</title>
-  <meta name="description" content="BookIt by Via Vera gives home service companies a 24/7 SMS booking system. Customers book online, get texted instantly, and pay before dispatch. Zero missed calls." />
+  <title>Via Vera — BookIt · 24/7 SMS Booking for Home Service Companies</title>
+  <meta name="description" content="BookIt by Via Vera gives HVAC, plumbing, and electrical companies a 24/7 SMS booking system. Customers book online, get texted instantly, and pay before dispatch. Zero missed calls." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── Variables ─────────────────────────────────────────── */
+    /* ── Variables ──────────────────────────────────────────── */
     :root {
-      --bg:           #080808;
-      --surface:      #111111;
-      --surface-2:    #181818;
-      --gold:         #C4973A;
-      --gold-light:   #E8C070;
-      --gold-glow:    rgba(196,151,58,0.10);
-      --gold-border:  rgba(196,151,58,0.20);
-      --cream:        #F5F0E8;
-      --cream-70:     rgba(245,240,232,0.70);
-      --cream-40:     rgba(245,240,232,0.40);
-      --cream-15:     rgba(245,240,232,0.10);
-      --cream-6:      rgba(245,240,232,0.05);
-      --success:      #22c55e;
-      --error:        #f87171;
-      --r-sm:         6px;
-      --r-md:         12px;
-      --r-lg:         20px;
-      --ease:         all 0.22s ease;
+      --bg:          #080808;
+      --surface:     #111111;
+      --surface-2:   #181818;
+      --gold:        #C4973A;
+      --gold-light:  #E8C070;
+      --gold-glow:   rgba(196,151,58,0.10);
+      --gold-border: rgba(196,151,58,0.22);
+      --cream:       #F5F0E8;
+      --cream-70:    rgba(245,240,232,0.70);
+      --cream-40:    rgba(245,240,232,0.40);
+      --cream-15:    rgba(245,240,232,0.10);
+      --cream-6:     rgba(245,240,232,0.05);
+      --success:     #22c55e;
+      --error:       #f87171;
+      --r-sm:        6px;
+      --r-md:        12px;
+      --r-lg:        20px;
+      --ease:        all 0.22s ease;
     }
 
-    /* ── Reset ─────────────────────────────────────────────── */
+    /* ── Reset ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -41,22 +41,22 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.12; }
+    h1,h2,h3,h4,h5 { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.15; }
     a { color: var(--gold); text-decoration: none; transition: var(--ease); }
     a:hover { color: var(--cream); }
     img { max-width: 100%; display: block; }
-    input, textarea, select, button { font-family: 'Inter', sans-serif; }
+    input,textarea,select,button { font-family: 'Inter', sans-serif; }
 
     /* ── Layout ─────────────────────────────────────────────── */
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
-    section { padding: 112px 0; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 100px 0; }
 
-    /* ── Nav ─────────────────────────────────────────────────── */
+    /* ── Navigation ─────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(8,8,8,0.94);
+      background: rgba(8,8,8,0.90);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--gold-border);
@@ -64,68 +64,82 @@
     .nav-inner {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 0 28px;
-      height: 64px;
+      padding: 0 32px;
+      height: 66px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .nav-logo .arrow { color: var(--gold); font-size: 0.85rem; }
-    .nav-logo .dot { color: var(--gold); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-logo img { height: 24px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: var(--cream-40);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       transition: var(--ease);
     }
     .nav-links a:hover { color: var(--cream); }
     .nav-cta {
-      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #000 !important;
       background: var(--gold);
-      padding: 8px 20px;
+      padding: 9px 20px;
       border-radius: var(--r-sm);
       transition: var(--ease) !important;
     }
     .nav-cta:hover { background: var(--gold-light) !important; color: #000 !important; }
 
-    /* ── Hero ─────────────────────────────────────────────────── */
-    #hero { padding-top: 180px; padding-bottom: 100px; }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 80px;
-      align-items: center;
+    /* ── Hero ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
     }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(8,8,8,0.97) 0%,
+        rgba(8,8,8,0.88) 38%,
+        rgba(8,8,8,0.60) 62%,
+        rgba(8,8,8,0.30) 100%
+      );
+    }
+    .hero-content-area {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 160px 0 80px;
+    }
+    .hero-content { max-width: 560px; }
     .hero-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -133,37 +147,40 @@
     .hero-eyebrow::before {
       content: '';
       display: block;
-      width: 28px;
+      width: 24px;
       height: 1px;
       background: var(--gold);
       flex-shrink: 0;
     }
     #hero h1 {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
       color: var(--cream);
       margin-bottom: 24px;
-      line-height: 1.05;
+      line-height: 1.06;
     }
-    #hero h1 em { font-style: normal; color: var(--gold); }
+    #hero h1 strong {
+      font-weight: 700;
+      color: var(--gold);
+    }
     .hero-sub {
       font-size: 1.02rem;
       color: var(--cream-70);
       line-height: 1.78;
       margin-bottom: 44px;
-      max-width: 480px;
     }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
     .btn-gold {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--gold);
       color: #000;
-      font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 14px 28px;
@@ -174,157 +191,110 @@
       text-decoration: none;
     }
     .btn-gold:hover { background: var(--gold-light); color: #000; transform: translateY(-2px); }
-    .btn-outline {
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: transparent;
       color: var(--cream-70);
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 14px 26px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      padding: 14px 24px;
       border-radius: var(--r-sm);
       border: 1px solid var(--cream-15);
       cursor: pointer;
       transition: var(--ease);
       text-decoration: none;
     }
-    .btn-outline:hover { border-color: var(--gold-border); color: var(--gold); }
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      margin-top: 64px;
-      padding-top: 40px;
-      border-top: 1px solid var(--cream-15);
-      flex-wrap: wrap;
-    }
-    .hero-stat-value {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: var(--cream);
-      display: block;
-      margin-bottom: 2px;
-    }
-    .hero-stat-label { font-size: 0.76rem; color: var(--cream-40); letter-spacing: 0.04em; }
+    .btn-ghost:hover { border-color: var(--gold-border); color: var(--gold); }
 
-    /* ── Hero Mockup ─────────────────────────────────────────── */
-    .hero-mockup {
-      background: var(--surface);
-      border: 1px solid var(--gold-border);
-      border-radius: var(--r-lg);
-      padding: 28px;
-    }
-    .mockup-label {
-      font-size: 0.66rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--cream-40);
-      margin-bottom: 22px;
-    }
-    .sms-thread { display: flex; flex-direction: column; gap: 12px; }
-    .sms-msg { display: flex; flex-direction: column; }
-    .sms-sender {
-      font-size: 0.66rem;
-      color: var(--cream-40);
-      margin-bottom: 5px;
-      letter-spacing: 0.04em;
-    }
-    .sms-bubble {
-      max-width: 88%;
-      padding: 11px 15px;
-      border-radius: 14px;
-      font-size: 0.82rem;
-      line-height: 1.55;
-    }
-    .sms-msg.inbound .sms-bubble {
-      background: var(--surface-2);
-      border: 1px solid var(--cream-15);
-      color: var(--cream-70);
-      align-self: flex-start;
-    }
-    .sms-msg.outbound { align-items: flex-end; }
-    .sms-msg.outbound .sms-bubble {
-      background: var(--gold-glow);
-      border: 1px solid var(--gold-border);
-      color: var(--cream);
-      align-self: flex-end;
-    }
-    .mockup-footer {
-      margin-top: 22px;
-      padding-top: 16px;
+    /* ── Hero Stats Bar ──────────────────────────────────────── */
+    .hero-stats-bar {
+      position: relative;
+      z-index: 1;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--cream-15);
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--success);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .status-text { font-size: 0.7rem; color: var(--cream-40); letter-spacing: 0.03em; }
-    .status-text strong { color: var(--success); font-weight: 600; }
-
-    /* ── Industry Strip ─────────────────────────────────────── */
-    .industry-strip {
-      border-top: 1px solid var(--cream-15);
-      border-bottom: 1px solid var(--cream-15);
-      padding: 26px 0;
-    }
-    .industry-strip-inner {
+    .hero-stats-inner {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 0 28px;
+      display: flex;
+      align-items: stretch;
+    }
+    .hero-stat-item {
+      flex: 1;
+      padding: 22px 0;
+      border-right: 1px solid var(--cream-15);
+      text-align: center;
+    }
+    .hero-stat-item:last-child { border-right: none; }
+    .hero-stat-val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 3px;
+      letter-spacing: -0.02em;
+    }
+    .hero-stat-lbl { font-size: 0.7rem; color: var(--cream-40); letter-spacing: 0.04em; }
+
+    /* ── Proof Strip ─────────────────────────────────────────── */
+    .proof-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--cream-15);
+      border-bottom: 1px solid var(--cream-15);
+      padding: 20px 0;
+    }
+    .proof-inner {
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 28px;
       flex-wrap: wrap;
     }
-    .strip-label {
-      font-size: 0.68rem;
+    .proof-label {
+      font-size: 0.66rem;
       font-weight: 600;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--cream-40);
       white-space: nowrap;
     }
-    .strip-divider { width: 1px; height: 18px; background: var(--cream-15); flex-shrink: 0; }
-    .strip-trades { display: flex; gap: 32px; flex-wrap: wrap; }
-    .strip-trade {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
+    .proof-divider { width: 1px; height: 18px; background: var(--cream-15); flex-shrink: 0; }
+    .proof-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .proof-item {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 500;
       color: var(--cream-70);
-      letter-spacing: 0.04em;
     }
+    .proof-sep { color: var(--cream-15); }
 
-    /* ── How It Works ───────────────────────────────────────── */
-    #how-it-works { border-top: 1px solid var(--cream-15); }
+    /* ── Section Shared ──────────────────────────────────────── */
     .section-eyebrow {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 14px;
     }
     .section-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
       color: var(--cream);
-      margin-bottom: 56px;
-      max-width: 560px;
-      line-height: 1.1;
+      margin-bottom: 52px;
+      max-width: 540px;
+      line-height: 1.12;
     }
+
+    /* ── How It Works ────────────────────────────────────────── */
+    #how-it-works { border-top: 1px solid var(--cream-15); }
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -333,7 +303,6 @@
       border: 1px solid var(--cream-15);
       border-radius: var(--r-lg);
       overflow: hidden;
-      margin-bottom: 48px;
     }
     .step {
       background: var(--bg);
@@ -343,23 +312,17 @@
     }
     .step:hover { background: var(--surface); }
     .step-num {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 5rem;
-      font-weight: 400;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 300;
       color: var(--cream-15);
       line-height: 1;
-      margin-bottom: 22px;
-      letter-spacing: -0.02em;
-      font-style: italic;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
     }
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 10px;
-    }
+    .step h3 { font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 10px; letter-spacing: -0.01em; }
     .step p { font-size: 0.86rem; color: var(--cream-70); line-height: 1.72; }
-    .step-accent {
+    .step-bar {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 2px;
@@ -367,58 +330,197 @@
       opacity: 0;
       transition: var(--ease);
     }
-    .step:hover .step-accent { opacity: 1; }
+    .step:hover .step-bar { opacity: 1; }
 
-    /* ── Features ───────────────────────────────────────────── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .feature {
-      padding: 28px;
+    /* ── Product Showcase ────────────────────────────────────── */
+    #product {
+      border-top: 1px solid var(--cream-15);
       background: var(--surface);
-      border: 1px solid var(--cream-15);
-      border-radius: var(--r-md);
-      transition: var(--ease);
     }
-    .feature:hover { border-color: var(--gold-border); }
-    .feature-icon {
-      width: 26px; height: 26px;
-      border-radius: 50%;
+    .product-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .product-side-label {
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-40);
+      margin-bottom: 20px;
+    }
+
+    /* Phone frame */
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone-frame {
+      background: #1c1c1e;
+      border: 1.5px solid rgba(245,240,232,0.08);
+      border-radius: 40px;
+      padding: 20px 14px;
+      width: 100%;
+      max-width: 280px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .phone-notch {
+      width: 80px; height: 5px;
+      background: #000;
+      border-radius: 100px;
+      margin: 0 auto 14px;
+    }
+    .phone-status {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cream);
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(245,240,232,0.07);
+      margin-bottom: 14px;
+    }
+    .phone-status small { display: block; font-size: 0.6rem; color: rgba(245,240,232,0.35); font-weight: 400; margin-top: 1px; }
+    .sms-thread { display: flex; flex-direction: column; gap: 8px; padding: 0 2px; }
+    .sms { display: flex; flex-direction: column; gap: 3px; }
+    .sms.in .bubble {
+      background: #3a3a3c;
+      color: #fff;
+      border-radius: 16px 16px 16px 4px;
+      align-self: flex-start;
+    }
+    .sms.out .bubble {
+      background: #007AFF;
+      color: #fff;
+      border-radius: 16px 16px 4px 16px;
+      align-self: flex-end;
+    }
+    .bubble {
+      max-width: 88%;
+      padding: 9px 12px;
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+    .sms-lbl {
+      font-size: 0.58rem;
+      color: rgba(245,240,232,0.3);
+      padding: 0 3px;
+    }
+    .sms.out .sms-lbl { align-self: flex-end; }
+
+    /* Dashboard mockup */
+    .dash-mockup {
+      background: var(--bg);
       border: 1px solid var(--gold-border);
-      background: var(--gold-glow);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    }
+    .dash-top {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--cream-15);
+      padding: 14px 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
+      justify-content: space-between;
     }
-    .feature-icon svg { width: 12px; height: 12px; stroke: var(--gold); }
-    .feature h4 { font-size: 0.9rem; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
-    .feature p { font-size: 0.8rem; color: var(--cream-70); line-height: 1.65; }
+    .dash-top-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--cream); }
+    .dash-live { display: flex; align-items: center; gap: 6px; }
+    .dash-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .dash-live-txt { font-size: 0.65rem; color: var(--success); font-weight: 600; letter-spacing: 0.06em; }
+    .dash-metrics {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--cream-15);
+      border-bottom: 1px solid var(--cream-15);
+    }
+    .dash-metric {
+      background: var(--bg);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .dash-metric-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--cream); display: block; letter-spacing: -0.02em; }
+    .dash-metric-lbl { font-size: 0.6rem; color: var(--cream-40); letter-spacing: 0.04em; }
+    .dash-rows { padding: 6px 0; }
+    .dash-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--cream-6);
+      font-size: 0.76rem;
+    }
+    .dash-row:last-child { border-bottom: none; }
+    .dr-name { color: var(--cream); font-weight: 500; margin-bottom: 1px; }
+    .dr-sub { font-size: 0.62rem; color: var(--cream-40); }
+    .dash-badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .db-confirmed { background: rgba(34,197,94,0.10); color: var(--success); border: 1px solid rgba(34,197,94,0.20); }
+    .db-awaiting { background: var(--gold-glow); color: var(--gold); border: 1px solid var(--gold-border); }
+    .db-new { background: rgba(96,165,250,0.10); color: #60a5fa; border: 1px solid rgba(96,165,250,0.20); }
 
-    /* ── Service Request Form ────────────────────────────────── */
+    /* ── Mission ─────────────────────────────────────────────── */
+    #mission {
+      border-top: 1px solid var(--cream-15);
+      padding: 100px 0;
+    }
+    .mission-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mission-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 36px;
+      line-height: 1;
+    }
+    .mission-quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.58;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .mission-quote em { font-style: italic; color: var(--gold); font-weight: 500; }
+    .mission-attr {
+      font-size: 0.72rem;
+      color: var(--cream-40);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ── Request Form ────────────────────────────────────────── */
     #request { border-top: 1px solid var(--cream-15); }
-    .form-section-header { max-width: 560px; margin-bottom: 52px; }
-    .form-section-header p { font-size: 0.95rem; color: var(--cream-70); margin-top: 12px; line-height: 1.7; }
+    .form-section-header { max-width: 540px; margin-bottom: 48px; }
+    .form-section-header p { font-size: 0.95rem; color: var(--cream-70); margin-top: 12px; line-height: 1.72; }
     .form-wrap {
       background: var(--surface);
       border: 1px solid var(--gold-border);
       border-radius: var(--r-lg);
-      padding: 52px;
+      padding: 48px;
       max-width: 700px;
     }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
     .form-full { grid-column: 1 / -1; }
     .field { display: flex; flex-direction: column; gap: 7px; }
     .field label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--cream-40);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    .required { color: var(--gold); }
+    .req { color: var(--gold); }
     .field input, .field textarea {
       background: var(--bg);
       border: 1px solid var(--cream-15);
@@ -430,18 +532,15 @@
       transition: var(--ease);
       width: 100%;
     }
-    .field input::placeholder, .field textarea::placeholder { color: var(--cream-40); font-size: 0.88rem; }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(245,240,232,0.28); }
     .field input:focus, .field textarea:focus { border-color: var(--gold); background: var(--surface-2); }
-    .field input.error, .field textarea.error { border-color: var(--error); }
     .field textarea { resize: none; height: 90px; }
-
-    /* Pills */
     .field-row { margin-bottom: 20px; }
     .field-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--cream-40);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
@@ -456,13 +555,10 @@
       padding: 7px 18px;
       cursor: pointer;
       transition: var(--ease);
-      font-family: 'Inter', sans-serif;
     }
     .pill-btn:hover { border-color: var(--gold-border); color: var(--cream); }
     .pill-btn.active { background: var(--gold-glow); border-color: var(--gold); color: var(--gold); font-weight: 600; }
-
-    /* Urgency */
-    .urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
+    .urgency-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 22px; }
     .urg-option { cursor: pointer; }
     .urg-option input[type=radio] { display: none; }
     .urg-label {
@@ -475,36 +571,25 @@
       text-align: center;
     }
     .urg-label strong { display: block; font-size: 0.82rem; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
-    .urg-label small { display: block; font-size: 0.68rem; color: var(--cream-40); }
+    .urg-label small { display: block; font-size: 0.67rem; color: var(--cream-40); }
     .urg-option input:checked + .urg-label { background: var(--gold-glow); border-color: var(--gold); }
     .urg-option input:checked + .urg-label strong { color: var(--gold); }
-
-    /* Consent */
     .consent-block {
       background: var(--bg);
       border: 1px solid var(--cream-15);
       border-radius: var(--r-sm);
-      padding: 16px 18px;
+      padding: 14px 16px;
       margin-bottom: 22px;
     }
     .consent-row { display: flex; gap: 12px; align-items: flex-start; }
-    .consent-row input[type=checkbox] {
-      width: 15px; height: 15px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      accent-color: var(--gold);
-      cursor: pointer;
-    }
-    .consent-text { font-size: 0.78rem; color: var(--cream-70); line-height: 1.58; }
-
-    /* Submit */
+    .consent-row input[type=checkbox] { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+    .consent-text { font-size: 0.77rem; color: var(--cream-70); line-height: 1.55; }
     .submit-btn {
       width: 100%;
       background: var(--gold);
       color: #000;
-      font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 15px;
@@ -519,17 +604,10 @@
     }
     .submit-btn:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); }
     .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-    .spinner {
-      width: 15px; height: 15px;
-      border: 2px solid rgba(0,0,0,0.2);
-      border-top-color: #000;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      display: none;
-    }
+    .spinner { width: 15px; height: 15px; border: 2px solid rgba(0,0,0,0.2); border-top-color: #000; border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .form-success { display: none; text-align: center; padding: 52px 24px; }
-    .form-success h3 { font-size: 1.35rem; color: var(--success); margin-bottom: 14px; }
+    .form-success h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; color: var(--success); margin-bottom: 14px; }
     .form-success p { color: var(--cream-70); font-size: 0.88rem; line-height: 1.7; }
     .form-error-msg {
       background: rgba(248,113,113,0.08);
@@ -543,54 +621,43 @@
     }
 
     /* ── SMS Compliance ──────────────────────────────────────── */
-    #sms-compliance { border-top: 1px solid var(--cream-15); padding: 52px 0; }
+    #sms-compliance { padding: 52px 0; border-top: 1px solid var(--cream-15); }
     .compliance-box {
       max-width: 700px;
-      padding: 30px 34px;
+      padding: 28px 32px;
       background: var(--surface);
       border: 1px solid var(--cream-15);
       border-radius: var(--r-md);
     }
-    .compliance-box h3 { font-size: 0.82rem; font-weight: 600; color: var(--cream-70); margin-bottom: 10px; }
-    .compliance-box p { font-size: 0.77rem; color: var(--cream-40); line-height: 1.72; margin-bottom: 6px; }
+    .compliance-box h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--cream-70); margin-bottom: 10px; }
+    .compliance-box p { font-size: 0.76rem; color: var(--cream-40); line-height: 1.72; margin-bottom: 6px; }
     .compliance-box p:last-child { margin-bottom: 0; }
-    .compliance-box a { color: var(--cream-40); text-decoration: underline; font-size: 0.77rem; }
+    .compliance-box a { color: var(--cream-40); text-decoration: underline; }
 
     /* ── For Companies ───────────────────────────────────────── */
     #for-companies { border-top: 1px solid var(--cream-15); }
-    .b2b-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .b2b-sub {
-      font-size: 0.95rem;
-      color: var(--cream-70);
-      line-height: 1.78;
-      margin-bottom: 36px;
-      margin-top: -32px;
-    }
+    .b2b-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .b2b-sub { font-size: 0.95rem; color: var(--cream-70); line-height: 1.78; margin-bottom: 36px; margin-top: -34px; }
     .b2b-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
     .b2b-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; color: var(--cream-70); line-height: 1.65; }
     .b2b-list li svg { width: 15px; height: 15px; stroke: var(--gold); flex-shrink: 0; margin-top: 3px; }
     .b2b-list li strong { color: var(--cream); }
-    .trade-cards { display: flex; flex-direction: column; gap: 14px; }
+    .trade-cards { display: flex; flex-direction: column; gap: 12px; }
     .trade-card {
       background: var(--surface);
       border: 1px solid var(--cream-15);
       border-radius: var(--r-md);
-      padding: 22px 26px;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: var(--ease);
     }
     .trade-card:hover { border-color: var(--gold-border); transform: translateX(4px); }
-    .trade-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--cream); margin-bottom: 3px; }
-    .trade-card p { font-size: 0.78rem; color: var(--cream-70); }
+    .trade-card h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+    .trade-card p { font-size: 0.76rem; color: var(--cream-70); }
     .trade-badge {
-      font-size: 0.64rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -601,284 +668,316 @@
     }
     .badge-active { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25); color: var(--success); }
     .badge-available { background: var(--gold-glow); border: 1px solid var(--gold-border); color: var(--gold); }
-    .demo-callout {
-      margin-top: 14px;
-      padding: 20px 24px;
-      background: var(--gold-glow);
-      border: 1px solid var(--gold-border);
-      border-radius: var(--r-md);
+    .testimonial-block {
+      margin-top: 28px;
+      padding: 26px 28px;
+      background: var(--surface);
+      border-left: 2px solid var(--gold);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
     }
-    .demo-callout p { font-size: 0.8rem; color: var(--cream-70); margin-bottom: 4px; }
-    .demo-callout p:last-child { margin-bottom: 0; }
-    .demo-callout strong { color: var(--cream); }
+    .testimonial-text { font-size: 0.9rem; color: var(--cream-70); line-height: 1.72; margin-bottom: 14px; font-style: italic; }
+    .testimonial-attr { font-size: 0.68rem; color: var(--cream-40); letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ── Footer ─────────────────────────────────────────────── */
     footer { border-top: 1px solid var(--cream-15); padding: 44px 0; }
     .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-logo .arrow { color: var(--gold); }
+    .footer-logo img { height: 20px; width: auto; opacity: 0.65; transition: var(--ease); }
+    .footer-logo:hover img { opacity: 1; }
     .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a { font-size: 0.78rem; color: var(--cream-40); }
+    .footer-links a { font-size: 0.76rem; color: var(--cream-40); }
     .footer-links a:hover { color: var(--cream-70); }
-    .footer-copy { font-size: 0.76rem; color: var(--cream-40); width: 100%; }
+    .footer-copy { font-size: 0.74rem; color: var(--cream-40); width: 100%; }
 
-    /* ── Responsive ─────────────────────────────────────────── */
+    /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-mockup { display: none; }
       .steps { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
+      .product-split { grid-template-columns: 1fr; }
       .b2b-inner { grid-template-columns: 1fr; }
-      .b2b-cards { order: -1; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       section { padding: 72px 0; }
-      #hero { padding-top: 130px; }
-      .hero-stats { gap: 24px; }
+      #hero { min-height: auto; }
+      .hero-content-area { padding: 120px 0 60px; }
+      .hero-stats-inner { flex-direction: column; }
+      .hero-stat-item { width: 100%; border-right: none; border-bottom: 1px solid var(--cream-15); padding: 16px; }
+      .hero-stat-item:last-child { border-bottom: none; }
       .form-wrap { padding: 28px 20px; }
       .form-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
       .urgency-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      .nav-links li:not(:last-child) { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <!-- ── Navigation ──────────────────────────────────────────── -->
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">
-        <span class="arrow">→</span> Via Vera<span class="dot">.</span>
-      </div>
+      <a href="/" class="nav-logo" id="nav-home-link">
+        <img src="assets/via-vera-logo.png" alt="Via Vera" />
+      </a>
       <ul class="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#request">Live Demo</a></li>
+        <li><a href="#product">The Product</a></li>
         <li><a href="#for-companies">For Companies</a></li>
-        <li><a href="mailto:evan@viavera.co?subject=Via Vera Demo Request" class="nav-cta" id="nav-demo-btn">Request Demo</a></li>
+        <li><a href="mailto:evan@viavera.co?subject=BookIt Demo Request" class="nav-cta" id="nav-demo-btn">Request Demo</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- ── Hero ────────────────────────────────────────────────── -->
   <section id="hero">
-    <div class="wrap">
-      <div class="hero-inner">
-
+    <div class="hero-bg">
+      <img src="assets/hvac-hero.jpg" alt="HVAC technician at work" class="hero-photo" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content-area">
+      <div class="wrap">
         <div class="hero-content">
           <div class="hero-eyebrow">BookIt by Via Vera</div>
-          <h1>Your customers book<br/>at 2am. <em>You sleep.</em></h1>
+          <h1>The jobs you're missing<br/>are happening <strong>right now.</strong></h1>
           <p class="hero-sub">
-            BookIt is a 24/7 SMS booking platform built for home service companies. A customer fills out a 60-second form. Your system texts them, confirms the appointment, and collects payment — automatically.
+            BookIt is a 24/7 SMS booking platform for home service companies. Customers fill out a 60-second form. Your system texts them, confirms the appointment, and collects payment — automatically.
           </p>
           <div class="hero-actions">
-            <a href="mailto:evan@viavera.co?subject=Via Vera Demo Request" class="btn-gold" id="hero-demo-btn">
-              Request a Demo
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <a href="mailto:evan@viavera.co?subject=BookIt Demo Request" class="btn-gold" id="hero-demo-btn">
+              Get a Live Demo
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </a>
-            <a href="#request" class="btn-outline" id="hero-live-btn">See it live</a>
-          </div>
-          <div class="hero-stats">
-            <div>
-              <span class="hero-stat-value">&lt; 2 min</span>
-              <span class="hero-stat-label">First SMS response</span>
-            </div>
-            <div>
-              <span class="hero-stat-value">24 / 7</span>
-              <span class="hero-stat-label">Always on</span>
-            </div>
-            <div>
-              <span class="hero-stat-value">$0</span>
-              <span class="hero-stat-label">Missed calls</span>
-            </div>
+            <a href="#how-it-works" class="btn-ghost" id="hero-learn-btn">See How It Works</a>
           </div>
         </div>
-
-        <!-- Live SMS Mockup -->
-        <div class="hero-mockup" aria-hidden="true">
-          <div class="mockup-label">Live SMS flow</div>
-          <div class="sms-thread">
-            <div class="sms-msg inbound">
-              <div class="sms-sender">BookIt System</div>
-              <div class="sms-bubble">
-                New request from Sarah M.<br/>
-                <strong style="color:var(--cream)">AC not cooling — Emergency</strong><br/>
-                4821 Maple Dr, Charlotte NC
-              </div>
-            </div>
-            <div class="sms-msg outbound">
-              <div class="sms-bubble">
-                Hi Sarah, this is Peak Air &amp; Heat. We received your request. A $89 service fee is required to confirm your appointment. Reply <strong>YES</strong> to proceed.
-              </div>
-            </div>
-            <div class="sms-msg inbound">
-              <div class="sms-bubble" style="max-width:36%">YES</div>
-            </div>
-            <div class="sms-msg outbound">
-              <div class="sms-bubble">
-                Payment link sent. Once paid, select your time:<br/>calendly.com/peakairheat
-              </div>
-            </div>
-          </div>
-          <div class="mockup-footer">
-            <div class="status-dot"></div>
-            <div class="status-text"><strong>Appointment confirmed</strong> — no phone call made</div>
-          </div>
+      </div>
+    </div>
+    <div class="hero-stats-bar">
+      <div class="hero-stats-inner">
+        <div class="hero-stat-item">
+          <span class="hero-stat-val">&lt; 2 min</span>
+          <span class="hero-stat-lbl">First SMS response</span>
         </div>
-
+        <div class="hero-stat-item">
+          <span class="hero-stat-val">24 / 7</span>
+          <span class="hero-stat-lbl">Always-on booking</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-val">$0</span>
+          <span class="hero-stat-lbl">Missed after-hours calls</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-val">100%</span>
+          <span class="hero-stat-lbl">Payment before dispatch</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Industry Strip ─────────────────────────────────────── -->
-  <div class="industry-strip">
-    <div class="industry-strip-inner">
-      <span class="strip-label">Currently serving</span>
-      <div class="strip-divider"></div>
-      <div class="strip-trades">
-        <span class="strip-trade">HVAC</span>
-        <span class="strip-trade">Plumbing</span>
-        <span class="strip-trade">Electrical</span>
-        <span class="strip-trade">Home Services</span>
+  <!-- ── Proof Strip ──────────────────────────────────────────── -->
+  <div class="proof-strip">
+    <div class="wrap">
+      <div class="proof-inner">
+        <span class="proof-label">Built on</span>
+        <div class="proof-divider"></div>
+        <div class="proof-logos">
+          <span class="proof-item">Stripe Payments</span>
+          <span class="proof-sep">·</span>
+          <span class="proof-item">Twilio SMS</span>
+          <span class="proof-sep">·</span>
+          <span class="proof-item">Google Workspace</span>
+          <span class="proof-sep">·</span>
+          <span class="proof-item">Railway Infrastructure</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── How It Works ──────────────────────────────────────── -->
+  <!-- ── How It Works ─────────────────────────────────────────── -->
   <section id="how-it-works">
     <div class="wrap">
       <div class="section-eyebrow">The Process</div>
-      <h2 class="section-title">Three steps. Confirmed in minutes. No phone calls.</h2>
-
+      <h2 class="section-title">Three steps. Confirmed in minutes. No calls required.</h2>
       <div class="steps">
         <div class="step">
           <div class="step-num">01</div>
           <h3>Customer submits a request</h3>
           <p>Your customer visits a shareable booking link — no login, no app download. A short form captures their name, address, problem, and phone number in under 60 seconds.</p>
-          <div class="step-accent"></div>
+          <div class="step-bar"></div>
         </div>
         <div class="step">
           <div class="step-num">02</div>
           <h3>BookIt handles the conversation</h3>
-          <p>The system texts them from your number within minutes. A simple YES reply confirms the appointment and triggers a Stripe payment link automatically.</p>
-          <div class="step-accent"></div>
+          <p>The system texts them from your dedicated number within minutes. A simple YES reply confirms the appointment and triggers a Stripe payment link — automatically.</p>
+          <div class="step-bar"></div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <h3>Payment collected before dispatch</h3>
-          <p>A service fee is charged via Stripe before your technician is sent. Every interaction — text, stage, and payment — is logged in your live analytics dashboard.</p>
-          <div class="step-accent"></div>
-        </div>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>Zero missed after-hours calls</h4>
-          <p>Customers can book at any hour. Your system responds instantly — even when your office is closed.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>Payment upfront via Stripe</h4>
-          <p>Service fees are collected before dispatch. No more chasing invoices or no-shows.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>White-labeled to your brand</h4>
-          <p>Customers interact with your company name and number. BookIt is invisible infrastructure.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>Live analytics dashboard</h4>
-          <p>Track every lead, conversation stage, payment, and conversion rate — refreshed on every page load.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>Works for any home service trade</h4>
-          <p>HVAC, plumbing, electrical — one platform with configurable flows per company.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          </div>
-          <h4>Shareable booking link</h4>
-          <p>Drop it into Google Business, email signatures, or QR codes. Setup takes under an hour.</p>
+          <p>A service fee is charged via Stripe before your technician leaves. Every interaction — text, stage, and payment — is logged in your live analytics dashboard.</p>
+          <div class="step-bar"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Service Request Form ───────────────────────────────── -->
+  <!-- ── Product Showcase ──────────────────────────────────────── -->
+  <section id="product">
+    <div class="wrap">
+      <div class="section-eyebrow">The Product</div>
+      <h2 class="section-title">What your customer sees. What you see.</h2>
+      <div class="product-split">
+
+        <!-- Phone / SMS side -->
+        <div>
+          <div class="product-side-label">Customer experience — SMS</div>
+          <div class="phone-wrap">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-status">
+                BookIt · Peak Air &amp; Heat
+                <small>Text Message</small>
+              </div>
+              <div class="sms-thread">
+                <div class="sms in">
+                  <div class="bubble">New service request from Sarah M.<br/><strong>AC not cooling — Emergency</strong><br/>4821 Maple Dr, Charlotte NC</div>
+                  <div class="sms-lbl">BookIt System · Now</div>
+                </div>
+                <div class="sms out">
+                  <div class="bubble">Hi Sarah! This is Peak Air &amp; Heat. A $89 service fee is required to confirm. Reply YES to proceed.</div>
+                  <div class="sms-lbl">Delivered</div>
+                </div>
+                <div class="sms in">
+                  <div class="bubble" style="max-width:44%">YES</div>
+                  <div class="sms-lbl">Sarah M.</div>
+                </div>
+                <div class="sms out">
+                  <div class="bubble">Payment link sent! Tap to pay &amp; select your time:<br/>stripe.com/pay/…</div>
+                  <div class="sms-lbl">Delivered</div>
+                </div>
+                <div class="sms in">
+                  <div class="bubble" style="max-width:72%; background:rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.2); color: #D1FAE5;">Payment confirmed. You're all set!</div>
+                  <div class="sms-lbl">BookIt · Just now</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard side -->
+        <div>
+          <div class="product-side-label">Your dashboard — real-time</div>
+          <div class="dash-mockup">
+            <div class="dash-top">
+              <div class="dash-top-title">Peak Air &amp; Heat — BookIt Dashboard</div>
+              <div class="dash-live">
+                <div class="dash-live-dot"></div>
+                <span class="dash-live-txt">Live</span>
+              </div>
+            </div>
+            <div class="dash-metrics">
+              <div class="dash-metric">
+                <span class="dash-metric-val">7</span>
+                <span class="dash-metric-lbl">Requests today</span>
+              </div>
+              <div class="dash-metric">
+                <span class="dash-metric-val">5</span>
+                <span class="dash-metric-lbl">Confirmed</span>
+              </div>
+              <div class="dash-metric">
+                <span class="dash-metric-val">$445</span>
+                <span class="dash-metric-lbl">Collected today</span>
+              </div>
+            </div>
+            <div class="dash-rows">
+              <div class="dash-row">
+                <div>
+                  <div class="dr-name">Sarah M.</div>
+                  <div class="dr-sub">AC not cooling · Emergency</div>
+                </div>
+                <span class="dash-badge db-confirmed">Confirmed</span>
+              </div>
+              <div class="dash-row">
+                <div>
+                  <div class="dr-name">James T.</div>
+                  <div class="dr-sub">Heater replacement · Urgent</div>
+                </div>
+                <span class="dash-badge db-awaiting">Awaiting payment</span>
+              </div>
+              <div class="dash-row">
+                <div>
+                  <div class="dr-name">Maria R.</div>
+                  <div class="dr-sub">Annual tune-up · Routine</div>
+                </div>
+                <span class="dash-badge db-new">New</span>
+              </div>
+              <div class="dash-row">
+                <div>
+                  <div class="dr-name">David K.</div>
+                  <div class="dr-sub">Freon recharge · Urgent</div>
+                </div>
+                <span class="dash-badge db-confirmed">Confirmed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mission ───────────────────────────────────────────────── -->
+  <section id="mission">
+    <div class="wrap">
+      <div class="mission-inner">
+        <div class="mission-icon">↑</div>
+        <blockquote class="mission-quote">
+          "Via Vera means <em>the true path.</em> We built BookIt because home service companies work harder than almost anyone — and they deserve software built the same way. Simple. Reliable. Done right."
+        </blockquote>
+        <div class="mission-attr">— Via Vera · Charlotte, NC</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Service Request Form ──────────────────────────────────── -->
   <section id="request">
     <div class="wrap">
       <div class="form-section-header">
         <div class="section-eyebrow">Live Demo</div>
         <h2 class="section-title" style="margin-bottom:0">This is what your customers see.</h2>
-        <p>Submit a test request below. You'll experience the exact flow your customers go through — from form submission to SMS confirmation and payment.</p>
+        <p>Submit a real test request below and experience the full flow — from form to SMS confirmation. This is the exact experience your customers will have.</p>
       </div>
 
       <div class="form-wrap">
-
-        <!-- Success State -->
         <div class="form-success" id="form-success">
           <h3>Request Received</h3>
-          <p>Check your phone — you'll receive an SMS within a few minutes to confirm your appointment time.<br/><br/>
-          If you don't receive a message within 10 minutes, email us at <a href="mailto:evan@viavera.co">evan@viavera.co</a>.</p>
+          <p>Check your phone — you'll receive an SMS within a few minutes to confirm your appointment.<br/><br/>
+          Didn't receive it within 10 minutes? Email <a href="mailto:evan@viavera.co">evan@viavera.co</a>.</p>
         </div>
 
-        <!-- The Form -->
         <form id="service-form" novalidate>
-
-          <!-- Contact Info -->
           <div class="form-grid">
             <div class="field">
-              <label for="name">Full Name <span class="required">*</span></label>
+              <label for="name">Full Name <span class="req">*</span></label>
               <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required/>
             </div>
             <div class="field">
-              <label for="phone">Mobile Number <span class="required">*</span></label>
+              <label for="phone">Mobile Number <span class="req">*</span></label>
               <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel" required/>
             </div>
             <div class="field form-full">
-              <label for="address">Service Address <span class="required">*</span></label>
+              <label for="address">Service Address <span class="req">*</span></label>
               <input type="text" id="address" name="address" placeholder="123 Main St, Charlotte, NC 28201" autocomplete="street-address" required/>
             </div>
           </div>
 
-          <!-- Service Type -->
           <div class="field-row">
-            <div class="field-label">Service Type <span class="required">*</span></div>
+            <div class="field-label">Service Type <span class="req">*</span></div>
             <div class="pills" id="serviceTypePills">
               <button type="button" class="pill-btn active" data-value="HVAC">HVAC</button>
               <button type="button" class="pill-btn" data-value="PLUMBING">Plumbing</button>
@@ -888,9 +987,8 @@
             <input type="hidden" id="serviceType" name="trade_type" value="HVAC"/>
           </div>
 
-          <!-- Urgency -->
           <div class="field-row">
-            <div class="field-label">Urgency <span class="required">*</span></div>
+            <div class="field-label">Urgency <span class="req">*</span></div>
             <div class="urgency-grid">
               <label class="urg-option">
                 <input type="radio" name="urgency" id="urg-emergency" value="emergency"/>
@@ -916,34 +1014,28 @@
             </div>
           </div>
 
-          <!-- Problem Description -->
           <div class="field" style="margin-bottom:22px;">
-            <label for="problem_description">Describe the Problem <span class="required">*</span></label>
+            <label for="problem_description">Describe the Problem <span class="req">*</span></label>
             <textarea id="problem_description" name="problem_description" placeholder="Briefly describe what's happening — e.g. 'AC stopped cooling, unit is running but not producing cold air'" required></textarea>
           </div>
 
-          <!-- SMS Consent -->
           <div class="consent-block">
             <div class="consent-row">
               <input type="checkbox" id="sms_consent" name="sms_consent" required/>
-              <span class="consent-text">
-                By checking this box, I consent to receive SMS messages from BookIt regarding my service request, including appointment confirmations, scheduling updates, and technician notifications. Message &amp; data rates may apply. Reply STOP to opt out, HELP for assistance.
-              </span>
+              <span class="consent-text">By checking this box, I consent to receive SMS messages from BookIt regarding my service request, including appointment confirmations, scheduling updates, and technician notifications. Message &amp; data rates may apply. Reply STOP to opt out.</span>
             </div>
           </div>
 
-          <!-- Error Message -->
           <div class="form-error-msg" id="form-error-msg"></div>
 
-          <!-- Submit -->
           <button type="submit" class="submit-btn" id="submit-btn">
             <div class="spinner" id="submit-spinner"></div>
             <span id="submit-text">Send My Request</span>
-            <svg id="submit-arrow" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <svg id="submit-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </button>
-          <p style="text-align:center;font-size:0.74rem;color:var(--cream-40);margin-top:14px;">
+          <p style="text-align:center;font-size:0.72rem;color:var(--cream-40);margin-top:14px;">
             Your information is never sold or shared. <a href="privacy.html">Privacy Policy</a>
           </p>
         </form>
@@ -951,107 +1043,108 @@
     </div>
   </section>
 
-  <!-- ── SMS Compliance ────────────────────────────────────── -->
+  <!-- ── SMS Compliance ────────────────────────────────────────── -->
   <section id="sms-compliance">
     <div class="wrap">
       <div class="compliance-box">
         <h3>SMS Communication Disclosure</h3>
         <p>By submitting a service request through this form, you expressly consent to receive automated SMS text messages from BookIt related to your service request. These messages may include appointment confirmations, scheduling updates, technician arrival notifications, payment links, and follow-up reminders.</p>
-        <p>Message frequency varies based on your service request status. Standard message and data rates may apply depending on your mobile carrier plan. You may opt out at any time by replying <strong>STOP</strong> to any message. For assistance, reply <strong>HELP</strong> or contact us at <a href="mailto:evan@viavera.co">evan@viavera.co</a>.</p>
+        <p>Message frequency varies based on your service request status. Standard message and data rates may apply. You may opt out at any time by replying <strong>STOP</strong>. For assistance, reply <strong>HELP</strong> or contact <a href="mailto:evan@viavera.co">evan@viavera.co</a>.</p>
         <p>Consent is not a condition of purchase. <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></p>
       </div>
     </div>
   </section>
 
-  <!-- ── For Companies ─────────────────────────────────────── -->
+  <!-- ── For Companies ─────────────────────────────────────────── -->
   <section id="for-companies">
     <div class="wrap">
       <div class="b2b-inner">
-
-        <div class="b2b-content">
+        <div>
           <div class="section-eyebrow">For Home Service Companies</div>
-          <h2 class="section-title">Stop losing jobs after business hours.</h2>
-          <p class="b2b-sub">
-            BookIt plugs into your business in under a day. You get a dedicated booking link, a Twilio-powered number, and a live analytics dashboard. Your customers book themselves. You close more jobs and collect payment before a technician leaves the shop.
-          </p>
+          <h2 class="section-title">Stop losing jobs after hours.</h2>
+          <p class="b2b-sub">BookIt plugs into your business in under a day. You get a dedicated booking link, a Twilio-powered dedicated number, and a live analytics dashboard. Your customers book themselves. You close more jobs.</p>
           <ul class="b2b-list">
             <li>
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span><strong>Setup in under an hour.</strong> We handle configuration. You get a link to share with customers.</span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span><strong>Setup in under an hour.</strong> We handle the configuration. You get a link to share.</span>
             </li>
             <li>
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span><strong>Your name, your number.</strong> Customers interact with your brand — BookIt is invisible infrastructure.</span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span><strong>Your name. Your number.</strong> Customers interact with your brand. BookIt is invisible infrastructure.</span>
             </li>
             <li>
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span><strong>Real-time dashboard.</strong> See every lead, stage, payment, and conversion rate in one place.</span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span><strong>Payment before dispatch.</strong> Stripe collects the service fee automatically. No invoices. No chasing.</span>
             </li>
             <li>
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
               <span><strong>Month-to-month pricing.</strong> No long-term contracts. Cancel any time.</span>
             </li>
           </ul>
-          <a href="mailto:evan@viavera.co?subject=Via Vera Demo Request" class="btn-gold" id="b2b-contact-btn">
+          <a href="mailto:evan@viavera.co?subject=BookIt Demo Request" class="btn-gold" id="b2b-demo-btn">
             Request a Live Demo
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </a>
         </div>
 
-        <div class="trade-cards">
-          <div class="trade-card">
-            <div>
-              <h4>HVAC Companies</h4>
-              <p>After-hours AC and heating calls captured and booked automatically.</p>
+        <div>
+          <div class="trade-cards">
+            <div class="trade-card">
+              <div>
+                <h4>HVAC Companies</h4>
+                <p>After-hours AC and heating calls booked and paid automatically.</p>
+              </div>
+              <span class="trade-badge badge-active">Active</span>
             </div>
-            <span class="trade-badge badge-active">Active</span>
-          </div>
-          <div class="trade-card">
-            <div>
-              <h4>Plumbing Companies</h4>
-              <p>Emergency pipe and drain calls handled via SMS — no voicemail.</p>
+            <div class="trade-card">
+              <div>
+                <h4>Plumbing Companies</h4>
+                <p>Emergency pipe and drain calls handled via SMS — no voicemail.</p>
+              </div>
+              <span class="trade-badge badge-available">Available</span>
             </div>
-            <span class="trade-badge badge-available">Available</span>
-          </div>
-          <div class="trade-card">
-            <div>
-              <h4>Electrical Companies</h4>
-              <p>Outage and panel calls triaged and scheduled without a phone call.</p>
+            <div class="trade-card">
+              <div>
+                <h4>Electrical Companies</h4>
+                <p>Outage and panel calls triaged and scheduled without a phone call.</p>
+              </div>
+              <span class="trade-badge badge-available">Available</span>
             </div>
-            <span class="trade-badge badge-available">Available</span>
           </div>
-          <div class="demo-callout">
-            <p>Want to see the full flow in action?</p>
-            <p><strong>Fill out the form above — you'll experience exactly what your customers see, start to finish.</strong></p>
+          <div class="testimonial-block">
+            <p class="testimonial-text">"BookIt handled three after-hours calls while I was at my daughter's baseball game. By the time I checked my phone, all three were confirmed and paid."</p>
+            <div class="testimonial-attr">— Demo Client · Charlotte, NC · HVAC</div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ── Footer ────────────────────────────────────────────── -->
+  <!-- ── Footer ────────────────────────────────────────────────── -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-logo"><span class="arrow">→</span> Via Vera<span style="color:var(--gold)">.</span></div>
-      <ul class="footer-links">
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        <li><a href="mailto:evan@viavera.co">Contact</a></li>
-      </ul>
-      <div class="footer-copy">© 2026 Via Vera. All rights reserved. &nbsp;·&nbsp; Secure booking powered by <a href="https://viavera.co" style="color:var(--cream-40)">BookIt</a></div>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">
+          <img src="assets/via-vera-logo.png" alt="Via Vera" />
+        </a>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="mailto:evan@viavera.co">Contact</a></li>
+        </ul>
+        <div class="footer-copy">© 2026 Via Vera. All rights reserved. &nbsp;·&nbsp; Secure booking powered by BookIt.</div>
+      </div>
     </div>
   </footer>
 
-  <!-- ── JavaScript ─────────────────────────────────────────── -->
+  <!-- ── JavaScript ─────────────────────────────────────────────── -->
   <script>
-    // ── Configuration ──────────────────────────────────────────
     const API_BASE_URL = "https://hvac-booking-backend-production.up.railway.app";
     const COMPANY_ID   = "hvac_001";
 
-    // ── Service Type Pills ──────────────────────────────────────
+    // Service type pills
     document.querySelectorAll("#serviceTypePills .pill-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("#serviceTypePills .pill-btn").forEach(b => b.classList.remove("active"));
@@ -1060,7 +1153,7 @@
       });
     });
 
-    // ── Form Submission ─────────────────────────────────────────
+    // Form logic
     const form          = document.getElementById("service-form");
     const successBlock  = document.getElementById("form-success");
     const errorMsg      = document.getElementById("form-error-msg");
@@ -1069,28 +1162,19 @@
     const submitSpinner = document.getElementById("submit-spinner");
     const submitArrow   = document.getElementById("submit-arrow");
 
-    function setLoading(loading) {
-      submitBtn.disabled             = loading;
-      submitSpinner.style.display    = loading ? "block" : "none";
-      submitArrow.style.display      = loading ? "none"  : "block";
-      submitText.textContent         = loading ? "Sending…" : "Send My Request";
+    function setLoading(on) {
+      submitBtn.disabled          = on;
+      submitSpinner.style.display = on ? "block" : "none";
+      submitArrow.style.display   = on ? "none"  : "block";
+      submitText.textContent      = on ? "Sending…" : "Send My Request";
     }
-
     function showError(msg) {
-      errorMsg.textContent   = msg;
+      errorMsg.textContent = msg;
       errorMsg.style.display = "block";
       errorMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-
-    function hideError() {
-      errorMsg.style.display = "none";
-      errorMsg.textContent   = "";
-    }
-
-    function getRadio(name) {
-      const el = document.querySelector(`input[name="${name}"]:checked`);
-      return el ? el.value : null;
-    }
+    function hideError() { errorMsg.style.display = "none"; errorMsg.textContent = ""; }
+    function getRadio(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : null; }
 
     function validate() {
       const name    = document.getElementById("name").value.trim();
@@ -1099,11 +1183,10 @@
       const problem = document.getElementById("problem_description").value.trim();
       const consent = document.getElementById("sms_consent").checked;
       if (!name)    return "Please enter your full name.";
-      if (!phone || phone.replace(/\D/g, "").length < 10)
-                    return "Please enter a valid 10-digit phone number.";
+      if (!phone || phone.replace(/\D/g,"").length < 10) return "Please enter a valid 10-digit phone number.";
       if (!address) return "Please enter your service address.";
       if (!problem) return "Please describe the problem.";
-      if (!consent) return "You must consent to SMS messages to submit a service request.";
+      if (!consent) return "You must consent to SMS messages to submit a request.";
       return null;
     }
 
@@ -1113,10 +1196,6 @@
       const err = validate();
       if (err) { showError(err); return; }
       setLoading(true);
-
-      const urgency   = getRadio("urgency") || "urgent";
-      const tradeType = document.getElementById("serviceType").value || "HVAC";
-
       try {
         const resp = await fetch(API_BASE_URL + "/submit-request", {
           method:  "POST",
@@ -1126,13 +1205,12 @@
             phone:               document.getElementById("phone").value.trim(),
             address:             document.getElementById("address").value.trim(),
             problem_description: document.getElementById("problem_description").value.trim(),
-            urgency,
-            trade_type:  tradeType,
-            company_id:  COMPANY_ID,
-            sms_consent: true,
+            urgency:             getRadio("urgency") || "urgent",
+            trade_type:          document.getElementById("serviceType").value || "HVAC",
+            company_id:          COMPANY_ID,
+            sms_consent:         true,
           }),
         });
-
         const data = await resp.json();
         if (data.success) {
           form.style.display         = "none";
@@ -1141,7 +1219,7 @@
           throw new Error(data.error || "Server error");
         }
       } catch (err) {
-        showError("We couldn't reach the server. Please check your connection and try again, or email us at evan@viavera.co.");
+        showError("We couldn't reach the server. Please try again or email evan@viavera.co.");
         setLoading(false);
       }
     });
