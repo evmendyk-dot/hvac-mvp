@@ -70,7 +70,19 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo img { height: 24px; width: auto; }
+    .nav-tagline {
+      font-size: 0.6rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      opacity: 0.80;
+      letter-spacing: 0.04em;
+      border-left: 1px solid var(--gold-border);
+      padding-left: 12px;
+      white-space: nowrap;
+    }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
       font-size: 0.8rem;
@@ -687,12 +699,47 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-logo img { height: 20px; width: auto; opacity: 0.65; transition: var(--ease); }
+    /* Footer brand section */
+    .footer-brand {
+      border-top: 1px solid var(--gold-border);
+      padding: 60px 0 48px;
+    }
+    .footer-logo { display: inline-block; margin-bottom: 22px; }
+    .footer-logo img { height: 22px; width: auto; opacity: 0.75; transition: var(--ease); }
     .footer-logo:hover img { opacity: 1; }
+    .footer-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .footer-tagline em { color: var(--gold); font-style: italic; }
+    .footer-desc {
+      font-size: 0.88rem;
+      color: var(--cream-40);
+      line-height: 1.76;
+      max-width: 560px;
+    }
+    /* Footer bottom row */
+    .footer-bottom {
+      border-top: 1px solid var(--cream-15);
+      padding: 24px 0;
+    }
+    .footer-bottom-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
     .footer-links { display: flex; gap: 28px; list-style: none; }
     .footer-links a { font-size: 0.76rem; color: var(--cream-40); }
     .footer-links a:hover { color: var(--cream-70); }
-    .footer-copy { font-size: 0.74rem; color: var(--cream-40); width: 100%; }
+    .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.25); }
 
     /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -721,6 +768,7 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo" id="nav-home-link">
         <img src="assets/via-vera-logo.png" alt="Via Vera" />
+        <span class="nav-tagline">The True Path.</span>
       </a>
       <ul class="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
@@ -845,7 +893,7 @@
               </div>
               <div class="sms-thread">
                 <div class="sms in">
-                  <div class="bubble">New service request from Sarah M.<br/><strong>AC not cooling — Emergency</strong><br/>4821 Maple Dr, Charlotte NC</div>
+                  <div class="bubble">New service request from Sarah M.<br/><strong>AC not cooling — Emergency</strong><br/>4821 Maple Dr, Greensboro NC</div>
                   <div class="sms-lbl">BookIt System · Now</div>
                 </div>
                 <div class="sms out">
@@ -939,7 +987,7 @@
         <blockquote class="mission-quote">
           "Via Vera means <em>the true path.</em> We built BookIt because home service companies work harder than almost anyone — and they deserve software built the same way. Simple. Reliable. Done right."
         </blockquote>
-        <div class="mission-attr">— Via Vera · Charlotte, NC</div>
+        <div class="mission-attr">— Via Vera · Greensboro, NC</div>
       </div>
     </div>
   </section>
@@ -972,7 +1020,7 @@
             </div>
             <div class="field form-full">
               <label for="address">Service Address <span class="req">*</span></label>
-              <input type="text" id="address" name="address" placeholder="123 Main St, Charlotte, NC 28201" autocomplete="street-address" required/>
+              <input type="text" id="address" name="address" placeholder="123 Main St, Greensboro, NC 27401" autocomplete="street-address" required/>
             </div>
           </div>
 
@@ -1115,7 +1163,7 @@
           </div>
           <div class="testimonial-block">
             <p class="testimonial-text">"BookIt handled three after-hours calls while I was at my daughter's baseball game. By the time I checked my phone, all three were confirmed and paid."</p>
-            <div class="testimonial-attr">— Demo Client · Charlotte, NC · HVAC</div>
+            <div class="testimonial-attr">— Demo Client · Greensboro, NC · HVAC</div>
           </div>
         </div>
       </div>
@@ -1124,17 +1172,25 @@
 
   <!-- ── Footer ────────────────────────────────────────────────── -->
   <footer>
-    <div class="wrap">
-      <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="wrap">
         <a href="/" class="footer-logo">
           <img src="assets/via-vera-logo.png" alt="Via Vera" />
         </a>
-        <ul class="footer-links">
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms &amp; Conditions</a></li>
-          <li><a href="mailto:evan@viavera.co">Contact</a></li>
-        </ul>
-        <div class="footer-copy">© 2026 Via Vera. All rights reserved. &nbsp;·&nbsp; Secure booking powered by BookIt.</div>
+        <p class="footer-tagline"><em>The True Path. Gracious Growth.</em></p>
+        <p class="footer-desc">Via Vera is latin for &ldquo;the true path&rdquo; &mdash; a reminder that the best way to grow a service business isn&rsquo;t just faster, it&rsquo;s better. Simple software. Honest pricing. Every job handled the right way.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">
+        <div class="footer-bottom-inner">
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="mailto:evan@viavera.co">Contact</a></li>
+          </ul>
+          <div class="footer-copy">© 2026 Via Vera &nbsp;·&nbsp; Greensboro, NC &nbsp;·&nbsp; Secure booking powered by BookIt</div>
+        </div>
       </div>
     </div>
   </footer>
