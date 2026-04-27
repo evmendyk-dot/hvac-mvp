@@ -71,7 +71,21 @@
       justify-content: space-between;
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 24px; width: auto; }
+    .logo-mark {
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
     .nav-tagline {
       font-size: 0.6rem;
       font-style: italic;
@@ -704,9 +718,10 @@
       border-top: 1px solid var(--gold-border);
       padding: 60px 0 48px;
     }
-    .footer-logo { display: inline-block; margin-bottom: 22px; }
-    .footer-logo img { height: 22px; width: auto; opacity: 0.75; transition: var(--ease); }
-    .footer-logo:hover img { opacity: 1; }
+    .footer-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 22px; }
+    .footer-logo .logo-mark { font-size: 1.3rem; }
+    .footer-logo .logo-text { font-size: 0.82rem; letter-spacing: 0.24em; }
+    .footer-logo:hover .logo-text { color: var(--gold); }
     .footer-tagline {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(1.3rem, 2.5vw, 1.7rem);
@@ -767,7 +782,8 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo" id="nav-home-link">
-        <img src="assets/via-vera-logo.png" alt="Via Vera" />
+        <span class="logo-mark">&#x2191;</span>
+        <span class="logo-text">Via Vera</span>
         <span class="nav-tagline">The True Path.</span>
       </a>
       <ul class="nav-links">
@@ -1175,7 +1191,8 @@
     <div class="footer-brand">
       <div class="wrap">
         <a href="/" class="footer-logo">
-          <img src="assets/via-vera-logo.png" alt="Via Vera" />
+          <span class="logo-mark">&#x2191;</span>
+          <span class="logo-text">Via Vera</span>
         </a>
         <p class="footer-tagline"><em>The True Path. Gracious Growth.</em></p>
         <p class="footer-desc">Via Vera is latin for &ldquo;the true path&rdquo; &mdash; a reminder that the best way to grow a service business isn&rsquo;t just faster, it&rsquo;s better. Simple software. Honest pricing. Every job handled the right way.</p>
