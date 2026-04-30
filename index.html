@@ -756,8 +756,88 @@
     .footer-links a:hover { color: var(--cream-70); }
     .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.25); }
 
+    /* ── Pricing Grid ───────────────────────────────────────── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--cream-15);
+      border-radius: var(--r-lg); padding: 40px 32px;
+      display: flex; flex-direction: column; position: relative;
+      transition: var(--ease);
+    }
+    .pricing-card:hover { border-color: var(--gold-border); transform: translateY(-4px); }
+    .pricing-card.popular {
+      background: var(--surface-2); border: 1px solid var(--gold-border);
+      box-shadow: 0 20px 40px rgba(196,151,58,0.08);
+    }
+    .popular-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: #000; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .tier-name { font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif;}
+    .tier-desc { font-size: 0.85rem; color: var(--cream-70); margin-bottom: 24px; min-height: 40px;}
+    .tier-price { font-size: 3rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 8px; letter-spacing: -0.04em;}
+    .tier-price span { font-size: 0.9rem; color: var(--cream-40); letter-spacing: 0; font-weight: 400;}
+    .tier-features { list-style: none; margin: 32px 0; flex: 1; display: flex; flex-direction: column; gap: 14px;}
+    .tier-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--cream-70); line-height: 1.5; }
+    .tier-features li svg { width: 16px; height: 16px; stroke: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .tier-features li strong { color: var(--cream); }
+
+    /* ── Checkout Modal ──────────────────────────────────────── */
+    #checkout-modal {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-content {
+      background: var(--surface); border: 1px solid var(--gold-border);
+      border-radius: var(--r-lg); width: 100%; max-width: 500px;
+      padding: 40px; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+      transform: translateY(20px); opacity: 0; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #checkout-modal.visible .modal-content { transform: translateY(0); opacity: 1; }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px; background: none; border: none;
+      color: var(--cream-40); font-size: 1.5rem; cursor: pointer; line-height: 1;
+      padding: 5px; transition: var(--ease);
+    }
+    .modal-close:hover { color: var(--cream); }
+    .modal-header { margin-bottom: 28px; text-align: center; }
+    .modal-header h2 { font-size: 1.5rem; margin-bottom: 8px; color: var(--cream); }
+    .modal-header p { font-size: 0.85rem; color: var(--cream-70); }
+    .modal-tier-badge {
+      display: inline-block; background: var(--gold-glow); color: var(--gold);
+      border: 1px solid var(--gold-border); padding: 4px 12px; border-radius: 100px;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    
+    .checkout-form .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .checkout-form label { font-size: 0.65rem; font-weight: 600; color: var(--cream-40); letter-spacing: 0.1em; text-transform: uppercase; }
+    .checkout-form input, .checkout-form select {
+      background: var(--bg); border: 1px solid var(--cream-15); border-radius: var(--r-sm);
+      color: var(--cream); font-size: 0.9rem; padding: 12px 14px; outline: none; transition: var(--ease); width: 100%;
+    }
+    .checkout-form input:focus, .checkout-form select:focus { border-color: var(--gold); background: var(--surface-2); }
+    .checkout-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .checkout-form-error { color: var(--error); font-size: 0.8rem; margin-bottom: 16px; display: none; background: rgba(248,113,113,0.1); padding: 10px; border-radius: var(--r-sm); border: 1px solid rgba(248,113,113,0.2); }
+    
+    .checkout-submit-btn {
+      width: 100%; background: var(--gold); color: #000; font-weight: 600;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 16px; border-radius: var(--r-sm); border: none; cursor: pointer;
+      transition: var(--ease); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .checkout-submit-btn:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); }
+    .checkout-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
     /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 450px; }
       .steps { grid-template-columns: 1fr; }
       .product-split { grid-template-columns: 1fr; }
       .b2b-inner { grid-template-columns: 1fr; }
@@ -790,7 +870,7 @@
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#product">The Product</a></li>
         <li><a href="#for-companies">For Companies</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="mailto:evan@viavera.co?subject=BookIt Demo Request" class="nav-cta" id="nav-demo-btn">Request Demo</a></li>
       </ul>
     </div>
@@ -844,24 +924,7 @@
     </div>
   </section>
 
-  <!-- ── Proof Strip ──────────────────────────────────────────── -->
-  <div class="proof-strip">
-    <div class="wrap">
-      <div class="proof-inner">
-        <span class="proof-label">Built on</span>
-        <div class="proof-divider"></div>
-        <div class="proof-logos">
-          <span class="proof-item">Stripe Payments</span>
-          <span class="proof-sep">·</span>
-          <span class="proof-item">Twilio SMS</span>
-          <span class="proof-sep">·</span>
-          <span class="proof-item">Google Workspace</span>
-          <span class="proof-sep">·</span>
-          <span class="proof-item">Railway Infrastructure</span>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ── How It Works ─────────────────────────────────────────── -->
   <section id="how-it-works">
@@ -1187,6 +1250,164 @@
     </div>
   </section>
 
+  <!-- ── Pricing ─────────────────────────────────────────────── -->
+  <section id="pricing" style="border-top: 1px solid var(--cream-15);">
+    <div class="wrap">
+      <div class="section-eyebrow">Pricing</div>
+      <h2 class="section-title">Software that pays for itself.</h2>
+      
+      <div class="pricing-grid">
+        <!-- Operator Tier -->
+        <div class="pricing-card">
+          <h3 class="tier-name">Operator</h3>
+          <p class="tier-desc">Never miss another job. Essential after-hours booking.</p>
+          <div class="tier-price">$149<span>/mo</span></div>
+          <ul class="tier-features">
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>1 dedicated SMS number</strong> for your business</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>24/7 automated booking form</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Instant email notifications on new bookings</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Optional upfront service fee capture</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Monthly booking summary report</span>
+            </li>
+          </ul>
+          <button class="btn-ghost open-checkout" data-tier="operator" data-price="$149">Select Operator</button>
+        </div>
+
+        <!-- Professional Tier -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3 class="tier-name">Professional</h3>
+          <p class="tier-desc">Grow your reputation and show up on Google.</p>
+          <div class="tier-price">$249<span>/mo</span></div>
+          <ul class="tier-features">
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>5-Star Reputation Engine</strong> (auto-requests reviews)</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Monthly Local Search Dominance Report</strong></span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Customized booking form with your brand colors</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Weekly analytics email (revenue & conversion)</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Everything in Operator</span>
+            </li>
+          </ul>
+          <button class="btn-gold open-checkout" data-tier="professional" data-price="$249">Select Professional</button>
+        </div>
+
+        <!-- Elite Tier -->
+        <div class="pricing-card">
+          <h3 class="tier-name">Elite</h3>
+          <p class="tier-desc">Operate like the big companies. Stay lean.</p>
+          <div class="tier-price">$399<span>/mo</span></div>
+          <ul class="tier-features">
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>White-label booking form</strong> (Via Vera invisible)</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Up to 3 dedicated SMS numbers</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Daily route optimization</strong> for technicians</span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span><strong>Executive Growth Action Plan</strong></span>
+            </li>
+            <li>
+              <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Everything in Professional</span>
+            </li>
+          </ul>
+          <button class="btn-ghost open-checkout" data-tier="elite" data-price="$399">Select Elite</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Checkout Modal ──────────────────────────────────────── -->
+  <div id="checkout-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-tier-badge" id="modal-tier-name">Professional</span>
+        <h2>Complete your setup</h2>
+        <p>You'll be securely redirected to Stripe to start your <span id="modal-price">$249</span>/mo subscription.</p>
+      </div>
+
+      <div class="checkout-form-error" id="checkout-form-error"></div>
+
+      <form class="checkout-form" id="checkout-form">
+        <input type="hidden" id="selected-tier" value="professional">
+        
+        <div class="row">
+          <div class="field">
+            <label for="company_name">Company Name</label>
+            <input type="text" id="company_name" required placeholder="e.g. CJones Plumbing">
+          </div>
+          <div class="field">
+            <label for="trade_type">Trade Type</label>
+            <select id="trade_type" required>
+              <option value="HVAC">HVAC</option>
+              <option value="PLUMBING">Plumbing</option>
+              <option value="ELECTRICAL">Electrical</option>
+              <option value="OTHER">Other Home Service</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="owner_name">Your Name (Owner/Manager)</label>
+          <input type="text" id="owner_name" required placeholder="John Doe">
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="checkout-email">Email Address</label>
+            <input type="email" id="checkout-email" required placeholder="john@example.com">
+          </div>
+          <div class="field">
+            <label for="checkout-phone">Phone Number</label>
+            <input type="tel" id="checkout-phone" required placeholder="(555) 555-5555">
+          </div>
+        </div>
+
+        <button type="submit" class="checkout-submit-btn" id="checkout-submit-btn">
+          <span id="checkout-submit-text">Continue to Payment</span>
+          <div class="spinner" id="checkout-submit-spinner"></div>
+        </button>
+        <p style="text-align: center; font-size: 0.65rem; color: var(--cream-40); margin-top: 12px;">You can cancel your subscription at any time.</p>
+      </form>
+    </div>
+  </div>
+
   <!-- ── Footer ────────────────────────────────────────────────── -->
   <footer>
     <div class="footer-brand">
@@ -1225,6 +1446,93 @@
         btn.classList.add("active");
         document.getElementById("serviceType").value = btn.dataset.value;
       });
+    });
+
+    // Checkout Modal Logic
+    const modal = document.getElementById('checkout-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const checkoutBtns = document.querySelectorAll('.open-checkout');
+    const checkoutForm = document.getElementById('checkout-form');
+    const checkoutErrorBox = document.getElementById('checkout-form-error');
+    const checkoutSubmitBtn = document.getElementById('checkout-submit-btn');
+    const checkoutSubmitText = document.getElementById('checkout-submit-text');
+    const checkoutSubmitSpinner = document.getElementById('checkout-submit-spinner');
+
+    checkoutBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tier = btn.dataset.tier;
+        const price = btn.dataset.price;
+        
+        document.getElementById('selected-tier').value = tier;
+        document.getElementById('modal-tier-name').textContent = tier;
+        document.getElementById('modal-price').textContent = price;
+        
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('visible'), 10);
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('visible');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        checkoutErrorBox.style.display = 'none';
+      }, 300);
+    }
+    
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    checkoutForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const tier = document.getElementById('selected-tier').value;
+      const company_name = document.getElementById('company_name').value.trim();
+      const owner_name = document.getElementById('owner_name').value.trim();
+      const email = document.getElementById('checkout-email').value.trim();
+      const phone = document.getElementById('checkout-phone').value.trim();
+      const trade_type = document.getElementById('trade_type').value;
+
+      checkoutErrorBox.style.display = 'none';
+      checkoutSubmitBtn.disabled = true;
+      checkoutSubmitText.textContent = 'Preparing Checkout...';
+      checkoutSubmitSpinner.style.display = 'block';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            tier, company_name, owner_name, email, phone, trade_type
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          window.location.href = data.checkout_url;
+        } else {
+          if (data.error === "checkout_not_configured") {
+             checkoutErrorBox.textContent = "Payment processing is currently being configured. Please check back later or contact us directly to sign up.";
+          } else {
+             checkoutErrorBox.textContent = data.error || "An error occurred. Please try again.";
+          }
+          checkoutErrorBox.style.display = 'block';
+          checkoutSubmitBtn.disabled = false;
+          checkoutSubmitText.textContent = 'Continue to Payment';
+          checkoutSubmitSpinner.style.display = 'none';
+        }
+      } catch (err) {
+        checkoutErrorBox.textContent = "Could not connect to the server. Please check your connection and try again.";
+        checkoutErrorBox.style.display = 'block';
+        checkoutSubmitBtn.disabled = false;
+        checkoutSubmitText.textContent = 'Continue to Payment';
+        checkoutSubmitSpinner.style.display = 'none';
+      }
     });
 
     // Form logic
