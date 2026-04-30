@@ -1282,6 +1282,7 @@
             trade_type:          document.getElementById("serviceType").value || "HVAC",
             company_id:          COMPANY_ID,
             sms_consent:         true,
+            is_demo:             true,   // viavera.co is always a demo submission
           }),
         });
         const data = await resp.json();
